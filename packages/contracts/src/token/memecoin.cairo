@@ -331,7 +331,7 @@ mod UnruggableMemecoin {
                 return;
             }
 
-            //TODO(audit): shouldnt ever happen since factory has all the supply
+            //TODO(audit): shouldn't ever happen since factory has all the supply
             if !self.is_launched() {
                 return;
             }
