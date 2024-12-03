@@ -16,6 +16,35 @@ export const container = style([
   }),
 ])
 
+export const container2 = style([
+  {
+    padding: '12px',
+    boxShadow: `0 0 16px ${vars.color.bg1}`,
+  },
+  sprinkles({
+    maxWidth: '620',
+    backgroundColor: 'bg2',
+    borderColor: 'border2',
+    borderWidth: '1px',
+    borderStyle: 'solid',
+    borderRadius: '10',
+  }),
+])
+
+export const iconWrapper = style([
+  {
+    flex: '1',
+  },
+  sprinkles({
+    height: '20',
+    width: '20',
+    backgroundColor: 'border2',
+    borderWidth: '1px',
+    borderStyle: 'solid',
+    borderRadius: '10',
+  }),
+])
+
 export const hr = style([
   {
     height: '1px',

@@ -11,6 +11,7 @@ import { Column, Row } from 'src/theme/components/Flex'
 import * as Text from 'src/theme/components/Text'
 import { vars } from 'src/theme/css/sprinkles.css'
 
+import TokenBuyer from './BuyToken'
 import CollectFees from './CollectFees'
 import Communities from './Communities'
 import IncreaseLiquidityLock from './IncreaseLiquidityLock'
@@ -43,7 +44,12 @@ export default function TokenPage() {
 
     if (!memecoin) return
 
-    return <TokenMetrics />
+    return (
+      <Column gap="10">
+        <TokenMetrics />
+        <TokenBuyer />
+      </Column>
+    )
   }, [ruggable, memecoin])
 
   // Owner content
