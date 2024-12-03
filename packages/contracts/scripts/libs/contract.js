@@ -24,15 +24,26 @@ const getContracts = () => {
   return contracts;
 };
 
-const getTokenLockerPath = () => {
+const getLockPositionPath = () => {
   const contracts = getContracts();
-  const tokenLocker = contracts.find((contract) =>
-    contract.includes("TokenLocker"),
+  const lockPosition = contracts.find((contract) =>
+    contract.includes("LockPosition"),
   );
-  if (!tokenLocker) {
-    throw new Error("TokenLocker contract not found. Run `scarb build` first");
+  if (!lockPosition) {
+    throw new Error("LockPosition contract not found. Run `scarb build` first");
   }
-  return path.join(TARGET_PATH, tokenLocker);
+  return path.join(TARGET_PATH, lockPosition);
+};
+
+const getLockManagerPath = () => {
+  const contracts = getContracts();
+  const lockManager = contracts.find((contract) =>
+    contract.includes("LockManager"),
+  );
+  if (!lockManager) {
+    throw new Error("LockManager contract not found. Run `scarb build` first");
+  }
+  return path.join(TARGET_PATH, lockManager);
 };
 
 const getUnruggableMemecoinPath = () => {
@@ -88,19 +99,20 @@ const declare = async (filepath, contract_name) => {
   return contract;
 };
 
-export const deployTokenLocker = async (min_lock_time) => {
+export const deployLockManager = async (min_lock_time) => {
   // Load account
   const account = getAccount();
 
   // Declare contract
-  const locker = await declare(getTokenLockerPath(), "TokenLocker");
+  const lockManager = await declare(getLockManagerPath(), "LockManager");
+  const lockPosition = await declare(getLockPositionPath(), "LockPosition");
 
   // Deploy contract
-  console.log(`\nDeploying TokenLocker...`.green);
+  console.log(`\nDeploying LockManager...`.green);
   console.log("Min lock time: ".green, min_lock_time);
   const contract = await account.deployContract({
-    classHash: locker.class_hash,
-    constructorCalldata: [min_lock_time],
+    classHash: lockManager.class_hash,
+    constructorCalldata: [min_lock_time, lockPosition.class_hash],
   });
 
   // Wait for transaction
@@ -110,9 +122,11 @@ export const deployTokenLocker = async (min_lock_time) => {
     `${network.explorer_url}/tx/${contract.transaction_hash})`,
   );
   await account.waitForTransaction(contract.transaction_hash);
+
+  return { lockManager: contract.address }
 };
 
-export const deployFactory = async () => {
+export const deployFactory = async (lockManagerAddress) => {
   // Load account
   const account = getAccount();
 
@@ -133,9 +147,10 @@ export const deployFactory = async () => {
   const contract = await account.deployContract({
     classHash: factory.class_hash,
     constructorCalldata: [
-      process.env.STARKNET_ACCOUNT_ADDRESS,
       memecoin.class_hash,
+      lockManagerAddress,
       exchanges,
+      []
     ],
   });
 
