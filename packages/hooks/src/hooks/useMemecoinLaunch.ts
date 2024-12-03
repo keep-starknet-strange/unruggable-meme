@@ -6,9 +6,13 @@ import { useQuery } from './internal/useQuery'
 import { useFactory } from './useFactory'
 
 export type UseMemecoinLaunchProps = UseQueryProps & {
+  /** The address of the memecoin */
   address?: string
 }
 
+/**
+ * Get a memecoin's launch details. This includes the memecoin's quote token, team allocations, and liquidity.
+ */
 export function useMemecoinLaunch({
   address,
   ...props

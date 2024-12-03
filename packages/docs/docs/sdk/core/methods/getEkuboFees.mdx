@@ -1,0 +1,24 @@
+---
+id: getEkuboFees
+sidebar_position: 5
+title: getEkuboFees
+---
+
+# getEkuboFees
+
+`getEkuboFees` method is used to get the collectable fees for a memecoin launched on Ekubo.
+
+## Parameters
+
+- memecoin: `Memecoin` - The memecoin to get the fees for.
+
+## Returns
+
+An instance of `Fraction` or `undefined` if the memecoin is not launched on Ekubo or the quote token is not supported.
+
+## Usage
+
+```ts
+const memecoin = await coreSdk.getMemecoin(memecoinAddress)
+const fees = await coreSdk.getEkuboFees(memecoin)
+```

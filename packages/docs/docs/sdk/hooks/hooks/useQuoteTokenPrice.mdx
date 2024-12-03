@@ -1,0 +1,30 @@
+---
+id: useQuoteTokenPrice
+sidebar_position: 7
+title: useQuoteTokenPrice
+---
+
+# useQuoteTokenPrice
+
+`useQuoteTokenPrice` hook is used to get Jediswap pair price of a quote token.
+
+## Options
+
+- address: `string` - The address of the quote token.
+- blockNumber?: `number` - The block number to use for fetching the pair price. If not provided, the latest block number is used.
+
+Please take a look at the [TanStack Query](https://tanstack.com/query/v5/docs/framework/react/reference/useQuery) documentation for more information on the options.
+
+## Returns
+
+An instance of `Fraction` or `undefined` if the quote token is not supported.
+
+Please take a look at the [TanStack Query](https://tanstack.com/query/v5/docs/framework/react/reference/useQuery) documentation for more information on the return values.
+
+## Usage
+
+```ts
+import { useQuoteTokenPrice } from 'hooks'
+
+const { data: quoteTokenPrice } = useQuoteTokenPrice({ address: memecoinAddress })
+```

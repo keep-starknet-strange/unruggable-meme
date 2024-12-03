@@ -1,0 +1,35 @@
+---
+id: getExtendLiquidityLockCalldata
+sidebar_position: 7
+title: getExtendLiquidityLockCalldata
+---
+
+# getExtendLiquidityLockCalldata
+
+`getExtendLiquidityLockCalldata` method is used to get the calldata for extending the liquidity lock of a memecoin launched on Jediswap or StarkDeFi.
+
+## Parameters
+
+- memecoin: `Memecoin` - The memecoin to extend the liquidity lock for.
+- seconds: `number` - The number of seconds to extend the lock for.
+
+## Returns
+
+`undefined` if the memecoin is not launched on Jediswap or StarkDeFi or an object with the following properties:
+
+- calls: `Call[]` - The calls to execute to extend the liquidity lock for the memecoin.
+
+## Usage
+
+```ts
+const memecoin = await coreSdk.getMemecoin(memecoinAddress)
+const calldata = await coreSdk.getExtendLiquidityLockCalldata(memecoin, seconds)
+
+if (!calldata) {
+  // Memecoin is not launched on Jediswap or StarkDeFi
+}
+
+const { calls } = calldata
+```
+
+`calls` can now be used to execute the transaction to extend the liquidity lock for the memecoin.

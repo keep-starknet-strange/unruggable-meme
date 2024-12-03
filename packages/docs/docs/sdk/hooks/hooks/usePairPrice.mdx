@@ -1,0 +1,32 @@
+---
+id: usePairPrice
+sidebar_position: 6
+title: usePairPrice
+---
+
+# usePairPrice
+
+`usePairPrice` hook is used to get Jediswap pair price for a given pair address and block number.
+
+## Options
+
+- pair: `Pair` - An object with the following properties:
+  - address: `string` - The address of the pair.
+  - reversed: `boolean` - Whether the pair is reversed or not.
+- blockNumber?: `number` - The block number to use for fetching the pair price. If not provided, the latest block number is used.
+
+Please take a look at the [TanStack Query](https://tanstack.com/query/v5/docs/framework/react/reference/useQuery) documentation for more information on the options.
+
+## Returns
+
+- data: `Fraction` - An instance of `Fraction`.
+
+Please take a look at the [TanStack Query](https://tanstack.com/query/v5/docs/framework/react/reference/useQuery) documentation for more information on the return values.
+
+## Usage
+
+```ts
+import { usePairPrice } from 'hooks'
+
+const { data: pairPrice } = usePairPrice({ address: memecoinAddress })
+```

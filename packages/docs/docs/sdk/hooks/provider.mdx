@@ -1,0 +1,55 @@
+---
+id: provider
+sidebar_position: 2
+title: Provider
+---
+
+# Provider
+
+The `Provider` is a React component that wraps your application and provides the necessary context to the hooks to interact with the Unruggable Meme framework.
+
+## Props
+
+If both `factory` and `provider` props are not provided, the hooks will use the default provider interface.
+
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Type</th>
+      <th>Description</th>
+      <th>Required</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <tr>
+      <td>factory</td>
+      <td>Factory</td>
+      <td>
+        The core sdk Factory instance to use in the hooks.
+        If the factory client is provided, the `provider` prop will be ignored.
+      </td>
+      <td>No</td>
+    </tr>
+
+    <tr>
+      <td>provider</td>
+      <td>ProviderInterface</td>
+      <td>
+        Provider Interface to use if the `factory` prop is not provided.
+      </td>
+      <td>No</td>
+    </tr>
+
+    <tr>
+      <td>queryClient</td>
+      <td>QueryClient</td>
+      <td>
+        React-query client to use. If not provided and there is no React Query instance, a new query client will be created.
+      </td>
+      <td>No</td>
+    </tr>
+
+  </tbody>
+</table>

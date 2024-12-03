@@ -1,0 +1,35 @@
+---
+id: getStartingMarketCap
+sidebar_position: 2
+title: getStartingMarketCap
+---
+
+# getStartingMarketCap
+
+`getStartingMarketCap` utility function is used to calculate the starting market cap of a launched memecoin.
+
+Quote token's price at the time of launch can be fetched using the [getPairPrice](./getPairPrice) utility function.
+
+## Parameters
+
+- memecoin: `Memecoin` - The memecoin to calculate the starting market cap for.
+- quoteTokenPriceAtLaunch: `Fraction` - The quote token's price at the time of launch.
+
+## Returns
+
+`Fraction` representing the starting market cap of the memecoin or `undefined` if the memecoin is not launched or the quote token is not supported.
+
+## Usage
+
+```ts
+const memecoin = await coreSdk.getMemecoin(memecoinAddress)
+const quoteTokenPriceAtLaunch = await getPairPrice(
+  coreSdk.config.provider,
+  memecoin.quoteToken.usdcPair,
+  memecoin.launch.blockNumber,
+)
+
+const startingMarketCap = getStartingMarketCap(memecoin, quoteTokenPriceAtLaunch)
+```
+
+`startingMarketCap` is an instance of `Fraction` or `undefined` if the memecoin is not launched or the quote token is not supported.

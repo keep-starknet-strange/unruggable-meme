@@ -4,6 +4,60 @@ sidebar_position: 1
 title: Overview
 ---
 
+```mdx-code-block
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+```
+
 # React Hooks
 
-Lorem ipsum dolor sit amet...
+React Hooks are built on top of the Unruggable Core SDK. It provides set of tools and hooks to allow developers to build decentralized applications integrated with the Unruggable Meme framework.
+
+## Getting Started
+
+### Installation
+
+To get started with the hooks, you need to install the hooks, core sdk and necessary packages in your project. The Hooks SDK is available as an NPM package and can be installed using the following command:
+
+:::caution
+Hooks package depends on the core sdk, starknet.js and Starknet React libraries. So you must also install core, starknet.js and @starknet-react/core libraries.
+:::
+
+<Tabs>
+  <TabItem value="yarn">
+    ```bash
+    yarn add hooks core starknet @starknet-react/core
+    ```
+  </TabItem>
+
+  <TabItem value="npm">
+    ```bash
+    npm install --save hooks core starknet @starknet-react/core
+    ```
+  </TabItem>
+</Tabs>
+
+### Quick Start
+
+You can now wrap your application with the `Provider` and start interacting with the Unruggable Meme framework.
+
+:::caution
+Hooks Provider must come after the Starknet React Provider.
+:::
+
+```ts
+import { StarknetConfig } from '@starknet-react/core'
+import { Provider as HooksProvider } from 'hooks'
+
+const App = () => {
+  return (
+    <StarknetConfig provider={provider}>
+      <HooksProvider provider={provider}>
+        <YourApp />
+      </HooksProvider>
+    </StarknetConfig>
+  )
+}
+```
+
+You can now start using the hooks in your application.

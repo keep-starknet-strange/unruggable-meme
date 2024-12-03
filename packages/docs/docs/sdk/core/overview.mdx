@@ -4,6 +4,54 @@ sidebar_position: 1
 title: Overview
 ---
 
+```mdx-code-block
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+```
+
 # The Unruggable Core SDK
 
-Lorem ipsum dolor sit amet...
+The Unruggable Core SDK is a set of tools and methods that allow developers to build decentralized applications integrated with the Unruggable Meme framework.
+The SDK provides a set of APIs that allow developers to interact with the tokens, retrieve token data, deploy new tokens and launch deployed tokens.
+
+## Getting Started
+
+### Installation
+
+To get started with the Unruggable Core SDK, you need to install the core sdk and necessary packages in your project. The SDK is available as an NPM package and can be installed using the following command:
+
+:::caution
+Core SDK depends on starknet.js library. So you must also install starknet.js library.
+:::
+
+<Tabs>
+  <TabItem value="yarn">
+    ```bash
+    yarn add core starknet
+    ```
+  </TabItem>
+
+  <TabItem value="npm">
+    ```bash
+    npm install --save core starknet
+    ```
+  </TabItem>
+</Tabs>
+
+### Quick Start
+
+You can now create a new instance of the core sdk and start interacting with the Unruggable Meme framework.
+
+```js
+import { Factory } from 'core'
+import { constants, RpcProvider } from 'starknet'
+
+const provider = new RpcProvider({
+  nodeUrl: 'your-node-url',
+})
+
+const coreSdk = new Factory({ provider, chainId: constants.StarknetChainId.SN_MAIN })
+```
+
+The `coreSdk` instance can now be used to interact with the Unruggable Meme framework.
+You can use the `coreSdk` instance to retrieve token data, get deployment calldata for deploying new tokens, get launch calldata for launching deployed tokens and many more.

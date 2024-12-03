@@ -1,0 +1,37 @@
+---
+id: getStandardAMMLaunchCalldata
+sidebar_position: 10
+title: getStandardAMMLaunchCalldata
+---
+
+# getStandardAMMLaunchCalldata
+
+`getStandardAMMLaunchCalldata` method is used to get the calldata for launching a deployed unruggable memecoin on Jediswap or StarkDeFi.
+
+## Parameters
+
+- memecoin: `Memecoin` - The memecoin to launch.
+- data: `EkuboLaunchData` - The data required to launch the memecoin on Jediswap or StarkDeFi.
+  - amm: `AMM` - The AMM to use for the memecoin.
+  - teamAllocations: `TeamAllocation[]` - The team allocations for the memecoin. An array of objects with the following properties:
+    - address: `string` - The address of the team member.
+    - amount: `string | number` - The allocation of the team member. Must **not be** multiplied by 10^decimals.
+  - holdLimit: `number` - The hold limit for the memecoin multiplied by 100. For example, 1% is 100, 10% is 1000, etc.
+  - antiBotPeriod: `number` - The anti-bot feature period for the memecoin in seconds. For example, 1 hour is 3600, 1 day is 86400, etc.
+  - quoteToken: `Token` - The quote token to use for the memecoin. Must be a `Token` object and must be supported. See `QUOTE_TOKENS` constant.
+  - startingMarketCap: `string | number` - The starting market cap of the memecoin in USDC.
+  - liquidityLockPeriod: `number` - The liquidity lock period for the memecoin in seconds. For example, 1 hour is 3600, 1 day is 86400, etc.
+
+## Returns
+
+An object with the following properties:
+
+- calls: `Call[]` - The calls to execute to launch the memecoin on Jediswap or StarkDeFi.
+
+## Usage
+
+```ts
+const { calls } = coreSdk.getStandardAMMLaunchCalldata(data)
+```
+
+`calls` can now be used to execute the transaction to launch the memecoin on Jediswap or StarkDeFi.

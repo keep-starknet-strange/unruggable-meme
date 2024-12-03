@@ -7,9 +7,13 @@ import { useFactory } from './useFactory'
 import { useMemecoin } from './useMemecoin'
 
 export interface UseEkuboFeesProps extends UseQueryProps {
+  /** The address of the memecoin */
   address?: string
 }
 
+/**
+ * Get the collectable ekubo fees for a memecoin.
+ */
 export function useEkuboFees({
   address,
   ...props

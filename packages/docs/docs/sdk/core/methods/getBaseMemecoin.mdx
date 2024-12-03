@@ -1,0 +1,30 @@
+---
+id: getBaseMemecoin
+sidebar_position: 2
+title: getBaseMemecoin
+---
+
+# getBaseMemecoin
+
+`getBaseMemecoin` method is used to get the base details of the memecoin. The base details include the name, symbol, decimals, owner, and total supply of the memecoin.
+
+## Parameters
+
+- address: `string` - The address of the memecoin.
+
+## Returns
+
+`BaseMemecoin` object with the following properties:
+
+- address: `string` - The address of the memecoin.
+- name: `string` - The name of the memecoin.
+- symbol: `string` - The symbol of the memecoin.
+- owner: `string` - The owner of the memecoin.
+- decimals: `number` - The number of decimals for the memecoin.
+- totalSupply: `string` - The total supply of the memecoin.
+
+## Usage
+
+```ts
+const baseMemecoin = await coreSdk.getBaseMemecoin(memecoinAddress)
+```

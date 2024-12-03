@@ -5,6 +5,14 @@ import { Entrypoint } from '../constants'
 import { USDCPair } from '../types/tokens'
 import { decimalsScale } from './helpers'
 
+/**
+ * Get the Jediswap pair price for a given pair.
+ * If the pair is not provided, returns 1.
+ * @param provider Starknet provider
+ * @param pair Pair to get the price for
+ * @param blockNumber Block number to get the price at
+ * @returns Pair price as a Fraction
+ */
 export async function getPairPrice(
   provider: ProviderInterface,
   pair?: USDCPair,

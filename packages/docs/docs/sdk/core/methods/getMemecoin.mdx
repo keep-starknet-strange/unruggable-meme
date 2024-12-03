@@ -1,0 +1,30 @@
+---
+id: getMemecoin
+sidebar_position: 1
+title: getMemecoin
+---
+
+# getMemecoin
+
+`getMemecoin` method is used to get both the [base details](./getBaseMemecoin) and the [launch data](./getMemecoinLaunchData) of the memecoin.
+
+## Parameters
+
+- address: `string` - The address of the memecoin.
+
+## Returns
+
+`Memecoin` object which is a combination of the [BaseMemecoin](./getBaseMemecoin) and [LaunchedMemecoin](./getMemecoinLaunchData) objects.
+
+<iframe
+  frameborder="0"
+  style={{ width: '100%', height: '352px' }}
+  allow="clipboard-write"
+  src="https://emgithub.com/iframe.html?target=https%3A%2F%2Fgithub.com%2Fkeep-starknet-strange%2Funruggable.meme%2Fblob%2Fdf4daac8f4a91f8ed5279f7a39ab9b40125265c7%2Fpackages%2Fcore%2Fsrc%2Ftypes%2Fmemecoin.ts%23L49-L72&style=github-dark-dimmed&type=code&showBorder=on&showLineNumbers=on&showFileMeta=on&showFullPath=on&showCopy=on"
+></iframe>
+
+## Usage
+
+```ts
+const memecoin = await coreSdk.getMemecoin(memecoinAddress)
+```

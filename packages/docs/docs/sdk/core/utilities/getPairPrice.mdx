@@ -1,0 +1,35 @@
+---
+id: getPairPrice
+sidebar_position: 1
+title: getPairPrice
+---
+
+# getPairPrice
+
+`getPairPrice` utility function is used to get Jediswap pair price for a given pair address and block number.
+
+## Parameters
+
+- provider: `ProviderInterface` - The provider to use for fetching the pair price.
+- pair: `Pair` - An object with the following properties:
+  - address: `string` - The address of the pair.
+  - reversed: `boolean` - Whether the pair is reversed or not.
+- blockNumber?: `number` - The block number to use for fetching the pair price. If not provided, the latest block number is used.
+
+## Returns
+
+`Fraction` representing the pair price at the given block number.
+
+## Usage
+
+```ts
+const memecoin = await coreSdk.getMemecoin(memecoinAddress)
+
+const quoteTokenPriceAtLaunch = await getPairPrice(
+  coreSdk.config.provider,
+  memecoin.quoteToken.usdcPair,
+  memecoin.launch.blockNumber,
+)
+```
+
+`quoteTokenPriceAtLaunch` is an instance of `Fraction` representing the pair price at the time of launch.

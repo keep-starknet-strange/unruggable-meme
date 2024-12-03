@@ -1,0 +1,32 @@
+---
+id: getDeployCalldata
+sidebar_position: 8
+title: getDeployCalldata
+---
+
+# getDeployCalldata
+
+`getDeployCalldata` method is used to get the calldata for deploying a new unruggable memecoin.
+
+## Parameters
+
+- data: `DeployData` - The data required to deploy the memecoin.
+  - name: `string` - The name of the memecoin.
+  - symbol: `string` - The symbol of the memecoin.
+  - decimals: `number` - The number of decimals for the memecoin.
+  - initialSupply: `string` - The initial supply of the memecoin. Note: Initial supply **should not** be multiplied by 10^decimals.
+
+## Returns
+
+An object with the following properties:
+
+- calls: `Call[]` - The calls to execute to deploy the memecoin.
+- tokenAddress: `string` - The calculated address of the memecoin.
+
+## Usage
+
+```ts
+const { tokenAddress, calls } = coreSdk.getDeployCalldata(data)
+```
+
+`calls` can now be used to execute the transaction to deploy the memecoin.

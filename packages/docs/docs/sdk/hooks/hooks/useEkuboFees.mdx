@@ -1,0 +1,30 @@
+---
+id: useEkuboFees
+sidebar_position: 4
+title: useEkuboFees
+---
+
+# useEkuboFees
+
+`useEkuboFees` hook is used to get the collectable fees for a memecoin launched on Ekubo.
+
+## Options
+
+- address: `string` - The address of the memecoin.
+- watch: `boolean` - If `true`, the query will automatically refetch data on every new block. Default is `false`.
+
+Please take a look at the [TanStack Query](https://tanstack.com/query/v5/docs/framework/react/reference/useQuery) documentation for more information on the options.
+
+## Returns
+
+- data: `Fraction | undefined` - An instance of `Fraction` or `undefined` if the memecoin is not launched on Ekubo or the quote token is not supported.
+
+Please take a look at the [TanStack Query](https://tanstack.com/query/v5/docs/framework/react/reference/useQuery) documentation for more information on the return values.
+
+## Usage
+
+```ts
+import { useEkuboFees } from 'hooks'
+
+const { data: ekuboFees } = useEkuboFees({ address: memecoinAddress })
+```
