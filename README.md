@@ -63,7 +63,7 @@ See the [contracts README](packages/contracts/README.md) for more information.
 
 ### Frontend
 
-See the [frontend README](packages/frontend/README.md) for more information.
+See the [frontend README](https://github.com/keep-starknet-strange/unruggable.meme/blob/main/README.md) for more information.
 
 ## 📖 License
 
